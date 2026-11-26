@@ -1,3 +1,7 @@
+package com.questions;
+
+import java.util.*;
+
 /*
  -- In-place algorithm
  Runtime Complexity - O(n*n)
@@ -5,6 +9,11 @@
  Memory - 45.1 MB
 */
 public class _5_Longest_Palindromic_Substring_01 {
+
+    public static void main(String[] args) {
+        System.out.println("Example 1: got " + new _5_Longest_Palindromic_Substring_01().longestPalindrome("babad") + "   expected bab (aba is also valid)");
+        System.out.println("Example 2: got " + new _5_Longest_Palindromic_Substring_01().longestPalindrome("cbbd") + "   expected bb");
+    }
 
     public String longestPalindrome(String s) {
         if( s.length() == 0){

@@ -1,3 +1,7 @@
+package com.questions;
+
+import java.util.*;
+
 /* 
  -- In-place algorithm
  Runtime Complexity - O(n)
@@ -15,50 +19,82 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+public class _25_Reverse_Nodes_in_k_Group_01 {
 
-    class Data{
-        ListNode first, second;
-        boolean doReverse = true;
-        Data(ListNode _f, ListNode _s, boolean _doRev){
-            this.first = _f;
-            this.second = _s;
-            this.doReverse = _doRev;
-        }
+    public static void main(String[] args) {
+        System.out.println("Example 1: got " + str(new Solution().reverseKGroup(list(1, 2, 3, 4, 5), 2)) + "   expected [2, 1, 4, 3, 5]");
+        System.out.println("Example 2: got " + str(new Solution().reverseKGroup(list(1, 2, 3, 4, 5), 3)) + "   expected [3, 2, 1, 4, 5]");
     }
 
-    private Data reverseIntrnl(ListNode head, int k, int curr){
-        if( head == null ){
-            return new Data(null, null, curr == 0);
+    // LeetCode's ListNode, plus helpers to build and print lists
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode() {}
+        ListNode(int val) { this.val = val; }
+        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    }
+
+    static ListNode list(int... values) {
+        ListNode dummy = new ListNode(0), tail = dummy;
+        for (int v : values) {
+            tail.next = new ListNode(v);
+            tail = tail.next;
         }
-        if( curr <= 0 ){
-            curr = k;
+        return dummy.next;
+    }
+
+    static String str(ListNode node) {
+        List<Integer> out = new ArrayList<>();
+        for (; node != null; node = node.next) out.add(node.val);
+        return out.toString();
+    }
+
+    static class Solution {
+
+        class Data{
+            ListNode first, second;
+            boolean doReverse = true;
+            Data(ListNode _f, ListNode _s, boolean _doRev){
+                this.first = _f;
+                this.second = _s;
+                this.doReverse = _doRev;
+            }
         }
-        Data reverseData = reverseIntrnl( head.next, k, curr - 1);
-        if( reverseData.first == null ){
-            head.next = null;
+
+        private Data reverseIntrnl(ListNode head, int k, int curr){
+            if( head == null ){
+                return new Data(null, null, curr == 0);
+            }
+            if( curr <= 0 ){
+                curr = k;
+            }
+            Data reverseData = reverseIntrnl( head.next, k, curr - 1);
+            if( reverseData.first == null ){
+                head.next = null;
+                if( !reverseData.doReverse && curr == k ){
+                    reverseData.doReverse = true;
+                }
+                return new Data(head, head, reverseData.doReverse);
+            }
+            if( curr != 1 && reverseData.doReverse ){
+                head.next = reverseData.second.next;
+                reverseData.second.next = head;
+                return new Data(reverseData.first, head, reverseData.doReverse);
+            }
+            head.next = reverseData.first;
             if( !reverseData.doReverse && curr == k ){
                 reverseData.doReverse = true;
             }
             return new Data(head, head, reverseData.doReverse);
         }
-        if( curr != 1 && reverseData.doReverse ){
-            head.next = reverseData.second.next;
-            reverseData.second.next = head;
-            return new Data(reverseData.first, head, reverseData.doReverse);
-        }
-        head.next = reverseData.first;
-        if( !reverseData.doReverse && curr == k ){
-            reverseData.doReverse = true;
-        }
-        return new Data(head, head, reverseData.doReverse);
-    }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
-        if( head == null ){
-            return null;
+        public ListNode reverseKGroup(ListNode head, int k) {
+            if( head == null ){
+                return null;
+            }
+            Data resultData = reverseIntrnl(head, k, k);
+            return resultData.first;
         }
-        Data resultData = reverseIntrnl(head, k, k);
-        return resultData.first;
     }
 }

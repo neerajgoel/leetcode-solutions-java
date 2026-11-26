@@ -1,6 +1,6 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+package com.questions;
+
+import java.util.*;
 
 /*
  Runtime Complexity - O(E*K)
@@ -10,6 +10,12 @@ import java.util.Map;
 
 */
 public class _787_Cheapest_Flights_Within_K_Stops_02 {
+
+    public static void main(String[] args) {
+        int[][] flights = {{0, 1, 100}, {1, 2, 100}, {2, 0, 100}, {1, 3, 600}, {2, 3, 200}};
+        System.out.println("Example 1: got " + findCheapestPrice(4, flights, 0, 3, 1) + "   expected 700");
+        System.out.println("Example 2: got " + findCheapestPrice(3, new int[][]{{0, 1, 100}, {1, 2, 100}, {0, 2, 500}}, 0, 2, 1) + "   expected 200");
+    }
 
     public static int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
 
@@ -46,12 +52,5 @@ public class _787_Cheapest_Flights_Within_K_Stops_02 {
         return d[dst] == Integer.MAX_VALUE ? -1 : d[dst];
     }
 
-    public static void main(String[] args) {
-        int[][] flg = {{0,3,7},{4,5,3},{6,4,8},{2,0,10},{6,5,6},{1,2,2},{2,5,9},{2,6,8},
-                {3,6,3},{4,0,10},{4,6,8},{5,2,6},{1,4,3},{4,1,6},{0,5,10},{3,1,5},{4,3,1},
-                {5,4,10},{0,1,6}};
-        int res = findCheapestPrice(7, flg, 2, 4, 1);
-        System.out.println(res);
-    }
 
 }

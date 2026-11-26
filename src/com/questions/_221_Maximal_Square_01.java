@@ -1,6 +1,19 @@
 package com.questions;
 
+import java.util.*;
+
 public class _221_Maximal_Square_01 {
+
+    public static void main(String[] args) {
+        char[][] matrix = {
+            {'1', '0', '1', '0', '0'},
+            {'1', '0', '1', '1', '1'},
+            {'1', '1', '1', '1', '1'},
+            {'1', '0', '0', '1', '0'}};
+        _221_Maximal_Square_01 s = new _221_Maximal_Square_01();
+        System.out.println("Example 1: got " + s.maximalSquare(matrix) + "   expected 4");
+        System.out.println("Example 2: got " + s.maximalSquare(new char[][]{{'0', '1'}, {'1', '0'}}) + "   expected 1");
+    }
 
     public int maximalSquare(char[][] mat) {
         if( mat.length <= 0 )
@@ -42,7 +55,4 @@ public class _221_Maximal_Square_01 {
         return result;
     }
 
-    public static void main(String[] args) {
-
-    }
 }

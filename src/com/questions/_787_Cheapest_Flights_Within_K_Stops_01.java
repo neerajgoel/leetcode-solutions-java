@@ -1,5 +1,6 @@
-import java.util.HashMap;
-import java.util.Map;
+package com.questions;
+
+import java.util.*;
 
 /*
  Runtime Complexity - O(2^n)
@@ -7,6 +8,12 @@ import java.util.Map;
  28 / 52 testcases passed
 */
 public class _787_Cheapest_Flights_Within_K_Stops_01 {
+
+    public static void main(String[] args) {
+        int[][] flights = {{0, 1, 100}, {1, 2, 100}, {2, 0, 100}, {1, 3, 600}, {2, 3, 200}};
+        System.out.println("Example 1: got " + new _787_Cheapest_Flights_Within_K_Stops_01().findCheapestPrice(4, flights, 0, 3, 1) + "   expected 700");
+        System.out.println("Example 2: got " + new _787_Cheapest_Flights_Within_K_Stops_01().findCheapestPrice(3, new int[][]{{0, 1, 100}, {1, 2, 100}, {0, 2, 500}}, 0, 2, 1) + "   expected 200");
+    }
 
     private int result = Integer.MAX_VALUE;
 

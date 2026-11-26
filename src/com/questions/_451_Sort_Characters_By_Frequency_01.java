@@ -1,3 +1,5 @@
+package com.questions;
+
 import java.util.*;
 
 /*
@@ -7,7 +9,12 @@ Memory - 54.9 MB
 */
 public class _451_Sort_Characters_By_Frequency_01 {
 
-    class Solution {
+    public static void main(String[] args) {
+        System.out.println("Example 1: got " + new Solution().frequencySort("tree") + "   expected eert (eetr is also valid)");
+        System.out.println("Example 2: got " + new Solution().frequencySort("Aabb") + "   expected bbAa (bbaA is also valid)");
+    }
+
+    static class Solution {
         public String frequencySort(String s) {
             HashMap<Character, Integer> map = new HashMap<>();
             for( char c : s.toCharArray()){

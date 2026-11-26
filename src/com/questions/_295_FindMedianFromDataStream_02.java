@@ -1,7 +1,6 @@
 package com.questions;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * O(n) - RunTime Complexity
@@ -9,6 +8,16 @@ import java.util.List;
  * Memory - 125.2 MB
  */
 public class _295_FindMedianFromDataStream_02 {
+
+    public static void main(String[] args) {
+        MedianFinder mf = new MedianFinder();
+        mf.addNum(1);
+        mf.addNum(2);
+        double first = mf.findMedian();
+        mf.addNum(3);
+        double second = mf.findMedian();
+        System.out.println("Example 1: got " + "[" + first + ", " + second + "]" + "   expected [1.5, 2.0]");
+    }
 
     static class MedianFinder {
 
@@ -67,27 +76,4 @@ public class _295_FindMedianFromDataStream_02 {
         }
     }
 
-    public static void main(String[] args) {
-        _295_FindMedianFromDataStream_01.MedianFinder mf = new _295_FindMedianFromDataStream_01.MedianFinder();
-        mf.addNum(6);
-        mf.addNum(10);
-        mf.addNum(2);
-        //mf.findMedian();
-        mf.addNum(6);
-        // mf.findMedian();
-        mf.addNum(5);
-        //mf.findMedian();
-        mf.addNum(0);
-        mf.findMedian();
-        mf.addNum(6);
-        mf.findMedian();
-
-        mf.addNum(3);
-        //mf.findMedian();
-
-        mf.addNum(1);
-
-        //mf.findMedian();
-
-    }
 }

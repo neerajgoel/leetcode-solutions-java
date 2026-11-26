@@ -1,3 +1,5 @@
+package com.questions;
+
 import java.util.*;
 
 /*
@@ -11,6 +13,29 @@ import java.util.*;
     According to question, values at same column should be sorted. So, I don't understand why this is the expected output.
  */
 public class _987_Vertical_Order_Traversal_of_a_Binary_Tree_01 {
+
+    public static void main(String[] args) {
+        _987_Vertical_Order_Traversal_of_a_Binary_Tree_01 s = new _987_Vertical_Order_Traversal_of_a_Binary_Tree_01();
+        System.out.println("Example 1: got " + s.verticalTraversal(tree(3, 9, 20, null, null, 15, 7)) + "   expected [[9], [3, 15], [20], [7]]");
+        System.out.println("Example 2: got " + s.verticalTraversal(tree(1, 2, 3, 4, 5, 6, 7)) + "   expected [[4], [2], [1, 5, 6], [3], [7]]");
+    }
+
+    // Builds a tree from LeetCode's level-order array, e.g. tree(3, 9, 20, null, null, 15, 7)
+    static TreeNode tree(Integer... v) {
+        if (v.length == 0 || v[0] == null) return null;
+        TreeNode root = new TreeNode(v[0]);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int i = 1;
+        while (i < v.length) {
+            TreeNode node = queue.poll();
+            if (v[i] != null) { node.left = new TreeNode(v[i]); queue.add(node.left); }
+            i++;
+            if (i < v.length && v[i] != null) { node.right = new TreeNode(v[i]); queue.add(node.right); }
+            i++;
+        }
+        return root;
+    }
 
     
       private static class TreeNode {
@@ -53,7 +78,4 @@ public class _987_Vertical_Order_Traversal_of_a_Binary_Tree_01 {
         return result;
     }
 
-    public static void main(String[] args) {
-        System.out.println("jk");
-    }
 }

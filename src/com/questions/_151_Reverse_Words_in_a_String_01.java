@@ -1,3 +1,6 @@
+package com.questions;
+
+import java.util.*;
 
 /*
 O(n) - time complexity
@@ -5,6 +8,12 @@ Runtime - 8 ms
 Memory - 43.5 MB
 */
 public class _151_Reverse_Words_in_a_String_01 {
+
+    public static void main(String[] args) {
+        _151_Reverse_Words_in_a_String_01 s = new _151_Reverse_Words_in_a_String_01();
+        System.out.println("Example 1: got " + "\"" + s.reverseWords("the sky is blue") + "\"" + "   expected \"blue is sky the\"");
+        System.out.println("Example 2: got " + "\"" + s.reverseWords("  hello world  ") + "\"" + "   expected \"world hello\"");
+    }
 
     public String reverseWords(String s) {
         if( s == null ){

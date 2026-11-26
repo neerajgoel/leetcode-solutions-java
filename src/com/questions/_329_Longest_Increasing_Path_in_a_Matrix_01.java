@@ -1,4 +1,6 @@
-import java.util.Arrays;
+package com.questions;
+
+import java.util.*;
 
 /*
  -- In-place algorithm
@@ -8,6 +10,12 @@ import java.util.Arrays;
 */
 
 public class _329_Longest_Increasing_Path_in_a_Matrix_01 {
+
+    public static void main(String[] args) {
+        _329_Longest_Increasing_Path_in_a_Matrix_01 s = new _329_Longest_Increasing_Path_in_a_Matrix_01();
+        System.out.println("Example 1: got " + s.longestIncreasingPath(new int[][]{{9, 9, 4}, {6, 6, 8}, {2, 1, 1}}) + "   expected 4");
+        System.out.println("Example 2: got " + s.longestIncreasingPath(new int[][]{{3, 4, 5}, {3, 2, 6}, {2, 2, 1}}) + "   expected 4");
+    }
     private int calc(int[][] mat, int res[][], int r, int c){
         if( res[r][c] != -1 ){
             return res[r][c];

@@ -1,8 +1,12 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+package com.questions;
+
+import java.util.*;
 
 public class _22_Generate_Parentheses_01 {
+
+    public static void main(String[] args) {
+        System.out.println("Example 1: got " + new _22_Generate_Parentheses_01().generateParenthesis(3) + "   expected [((())), (()()), (())(), ()(()), ()()()]");
+    }
 
     private void calc(int n, int open, int close, Stack<Character> st, List<String> result){
         if( st.size() == 2*n ){

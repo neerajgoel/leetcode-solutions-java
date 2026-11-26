@@ -1,3 +1,7 @@
+package com.questions;
+
+import java.util.*;
+
 /*
   Complexity - O( n )
   -- can be done O(k)
@@ -6,7 +10,30 @@
 */
 public class _230_Kth_Smallest_Element_in_a_BST_01 {
 
-      public class TreeNode {
+    public static void main(String[] args) {
+        _230_Kth_Smallest_Element_in_a_BST_01 s = new _230_Kth_Smallest_Element_in_a_BST_01();
+        System.out.println("Example 1: got " + s.kthSmallest(tree(3, 1, 4, null, 2), 1) + "   expected 1");
+        System.out.println("Example 2: got " + s.kthSmallest(tree(5, 3, 6, 2, 4, null, null, 1), 3) + "   expected 3");
+    }
+
+    // Builds a tree from LeetCode's level-order array, e.g. tree(3, 9, 20, null, null, 15, 7)
+    static TreeNode tree(Integer... v) {
+        if (v.length == 0 || v[0] == null) return null;
+        TreeNode root = new TreeNode(v[0]);
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        int i = 1;
+        while (i < v.length) {
+            TreeNode node = queue.poll();
+            if (v[i] != null) { node.left = new TreeNode(v[i]); queue.add(node.left); }
+            i++;
+            if (i < v.length && v[i] != null) { node.right = new TreeNode(v[i]); queue.add(node.right); }
+            i++;
+        }
+        return root;
+    }
+
+      static class TreeNode {
           int val;
           TreeNode left;
           TreeNode right;

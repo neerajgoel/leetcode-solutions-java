@@ -1,5 +1,6 @@
-import java.util.Deque;
-import java.util.LinkedList;
+package com.questions;
+
+import java.util.*;
 
 /*
 
@@ -7,6 +8,12 @@ import java.util.LinkedList;
  Memory - 42.5 MB
 */
 public class _32_Longest_Valid_Parentheses_01 {
+
+    public static void main(String[] args) {
+        _32_Longest_Valid_Parentheses_01 s = new _32_Longest_Valid_Parentheses_01();
+        System.out.println("Example 1: got " + s.longestValidParentheses("(()") + "   expected 2");
+        System.out.println("Example 2: got " + s.longestValidParentheses(")()())") + "   expected 4");
+    }
     private boolean checkIfValid(String s){
         Deque<Character> que = new LinkedList<>();
         for(char c : s.toCharArray()){

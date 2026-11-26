@@ -1,3 +1,5 @@
+package com.questions;
+
 import java.util.*;
 
 /*
@@ -6,6 +8,12 @@ import java.util.*;
  Memory - 50.7 MB
 */
 public class _1462_Course_Schedule_IV_01 {
+
+    public static void main(String[] args) {
+        _1462_Course_Schedule_IV_01 s = new _1462_Course_Schedule_IV_01();
+        System.out.println("Example 1: got " + s.checkIfPrerequisite(2, new int[][]{{1, 0}}, new int[][]{{0, 1}, {1, 0}}) + "   expected [false, true]");
+        System.out.println("Example 2: got " + s.checkIfPrerequisite(3, new int[][]{{1, 2}, {1, 0}, {2, 0}}, new int[][]{{1, 0}, {1, 2}}) + "   expected [true, true]");
+    }
 
     enum Color{
         white, gray, black;

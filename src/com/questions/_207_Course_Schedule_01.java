@@ -1,7 +1,6 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+package com.questions;
+
+import java.util.*;
 
 /*
  Runtime Complexity - O(V+E) - DFS approach
@@ -9,7 +8,12 @@ import java.util.Set;
  Memory - 42.3 MB
 */
 public class _207_Course_Schedule_01 {
-    class Solution {
+
+    public static void main(String[] args) {
+        System.out.println("Example 1: got " + new Solution().canFinish(2, new int[][]{{1, 0}}) + "   expected true");
+        System.out.println("Example 2: got " + new Solution().canFinish(2, new int[][]{{1, 0}, {0, 1}}) + "   expected false");
+    }
+    static class Solution {
 
         enum Color{
             white, gray, black;

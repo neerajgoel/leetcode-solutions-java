@@ -1,3 +1,5 @@
+package com.questions;
+
 import java.util.*;
 
 /*
@@ -8,6 +10,12 @@ Runtime - 95 ms
 
 */
 public class _310_Minimum_Height_Trees_02 {
+
+    public static void main(String[] args) {
+        _310_Minimum_Height_Trees_02 s = new _310_Minimum_Height_Trees_02();
+        System.out.println("Example 1: got " + s.findMinHeightTrees(4, new int[][]{{1, 0}, {1, 2}, {1, 3}}) + "   expected [1]");
+        System.out.println("Example 2: got " + s.findMinHeightTrees(6, new int[][]{{3, 0}, {3, 1}, {3, 2}, {3, 4}, {5, 4}}) + "   expected [3, 4]");
+    }
 
     private void insertInMap(int u, int v, Map<Integer, Set<Integer>> map){
         if( !map.containsKey(u) ){

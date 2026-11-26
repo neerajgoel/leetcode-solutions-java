@@ -1,59 +1,71 @@
+package com.questions;
+
+import java.util.*;
+
 /*
  Runtime Complexity - O(n)
  Runtime - 6 ms
  Memory - 48.9 MB
 */
-class Solution {
+public class _210_Course_Schedule_II_01 {
 
-    enum color{
-        black, gray, white;
+    public static void main(String[] args) {
+        System.out.println("Example 1: got " + Arrays.toString(new Solution().findOrder(2, new int[][]{{1, 0}})) + "   expected [0, 1]");
+        System.out.println("Example 2: got " + Arrays.toString(new Solution().findOrder(4, new int[][]{{1, 0}, {2, 0}, {3, 1}, {3, 2}})) + "   expected [0, 2, 1, 3] (any valid order)");
     }
 
-    private void dfs(int numCourses){
-        for(int i=0 ; i<numCourses ; i++){
-            if( col[i] == color.white ){
-                dfs_visit(i);
+    static class Solution {
+
+        enum color{
+            black, gray, white;
+        }
+
+        private void dfs(int numCourses){
+            for(int i=0 ; i<numCourses ; i++){
+                if( col[i] == color.white ){
+                    dfs_visit(i);
+                }
             }
         }
-    }
 
-    private void dfs_visit(int u){
-        //System.out.println(" u : " + u);
-        col[u] = color.gray;
-        for(int v : grp.get(u) ){
-            if( col[v] == color.white){
-                dfs_visit(v);
+        private void dfs_visit(int u){
+            //System.out.println(" u : " + u);
+            col[u] = color.gray;
+            for(int v : grp.get(u) ){
+                if( col[v] == color.white){
+                    dfs_visit(v);
+                }
+                else if( col[v] == color.gray){
+                    foundLoop = true;
+                }
             }
-            else if( col[v] == color.gray){
-                foundLoop = true;
+            col[u] = color.black;
+            // insert at head of result;
+            result[index] = u;
+            index--;
+        }
+
+        color col[];
+        List<List<Integer>> grp;
+        int result[];
+        int index;
+        boolean foundLoop = false;
+
+
+        public int[] findOrder(int numCourses, int[][] prerequisites) {
+            grp = new ArrayList<>();
+            col = new color[numCourses];
+            index = numCourses - 1;
+            result = new int[numCourses];
+            for(int i=0 ; i<numCourses ; i++){
+                col[i] = color.white;
+                grp.add(new ArrayList<>());
             }
+            for(int[] ar : prerequisites){
+                grp.get(ar[1]).add(ar[0]);
+            }
+            dfs(numCourses);
+            return foundLoop ? new int[]{} : result;
         }
-        col[u] = color.black;
-        // insert at head of result;
-        result[index] = u;
-        index--;
-    }
-
-    color col[];
-    List<List<Integer>> grp;
-    int result[];
-    int index;
-    boolean foundLoop = false;
-
-
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        grp = new ArrayList<>();
-        col = new color[numCourses];
-        index = numCourses - 1;
-        result = new int[numCourses];
-        for(int i=0 ; i<numCourses ; i++){
-            col[i] = color.white;
-            grp.add(new ArrayList<>());
-        }
-        for(int[] ar : prerequisites){
-            grp.get(ar[1]).add(ar[0]);
-        }
-        dfs(numCourses);
-        return foundLoop ? new int[]{} : result;
     }
 }
